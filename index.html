@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -10,16 +11,16 @@
     <table>
         <tr>
             <td>
-            <form>
-                <div>
+            <form autocomplete="off" onsubmit="formSubmit()">
+                <div >
                     <label for = "Produkt"> Produkt Name:</label>
                     <input type ="text" name="Produkt" id ="Produkt">
-                    <label for = "Preis"> Preis:</label>
+                    <label for = "Produkt"> Preis:</label>
                     <input type ="text" name="Preis" id ="Preis">
                     <label for = Laden> Laden:</label>
                     <input type = "text" name = "Laden" id ="Laden">
                 </div>
-                <div>
+                <div class = "form_action--button">
                     <input type="submit" value="Hinzufügen">
                     <input type = "reset" value = "Zurücksetzen">
                 </div>
@@ -29,15 +30,15 @@
         </tr>
 
     </table>
-    <table>
+    <table class"list" id="Einkaufsliste">
         <thead>
-            <tr>
+        
                 <th>Produktname:</th>
                 <th>Preis:</th>
                 <th>Laden:</th>
                 <th>Kaufdatum:</th>
-            </tr>
         </thead>
     </table>
+    <script src = "script.js"></script>
 </body>
 </html>
