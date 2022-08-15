@@ -25,7 +25,7 @@ let insertNewRecord= (data)=>{
     cell5 = newRow.insertCell(4);
     rowCount++;
     edit = "edit"+rowCount;
-    cell5.innerHTML = `<button id = ${edit} onclick="editM(this.id);"> Edit </button> <button id =${rowCount} onclick="deleteM(this.id);"> Delete </button>`;
+    cell5.innerHTML = `<button id = ${edit} onclick="editM();"> Edit </button> <button id =${rowCount} onclick="deleteM(this.id);"> Delete </button>`;
 }
 
 let deleteM= (x)=> {
@@ -36,10 +36,15 @@ let deleteM= (x)=> {
 
 
 
-let editM= (x)=>{
-    const edit_button = document.getElementById(x);
-    edit_button.addEventListener("click", ()=> table.contentEditable =true)
-    
+
+let editM= ()=>{
+    var edit = document.getElementById("edit");
+    if(edit.style.display==="none" || edit.style.display === null){
+        edit.style.display="block";
+    }
+    else(
+        edit.style.display="none"
+    )
 }
 
 let formSubmit=(e)=>{
