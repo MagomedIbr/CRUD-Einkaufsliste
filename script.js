@@ -1,4 +1,6 @@
 var selectedRow = null;
+
+//Macht ein Objekt aus den Daten der Form
 let getFormData=()=> {
     var formObj ={};
     formObj["Produkt"] = document.getElementById("Produkt").value;
@@ -8,6 +10,7 @@ let getFormData=()=> {
 }
 let rowCount = 0;
 //https://developer.mozilla.org/de/docs/Web/API/HTMLTableElement/insertRow
+//Erstellt eine Zeile 
 let insertNewRecord= (data)=>{
     rowCount++;
     var table = document.getElementById("Einkaufsliste");
@@ -40,12 +43,13 @@ let deleteM= (x)=> {
 
 let formSubmit=(e)=>{
     event.preventDefault();
-        var formData = getFormData();
-        if(selectedRow == null){
-        insertNewRecord(formData);
-         }
+    var formData = getFormData();
+    if(selectedRow == null){
+    insertNewRecord(formData);
+    }
 }
 
+//Bekommt die Edit Data aus der Form
 let getEditData = (e) =>{
     event.preventDefault();
     var editObj = {};
@@ -59,25 +63,38 @@ let getEditData = (e) =>{
 let editRows = (x)=>{
     x = x.slice(-1);
     var roww = document.getElementById("Einkaufsliste").getElementsByTagName('tr')[x];
-    console.log(x);
+    //console.log(x);
 }
 
+//Editiert die Zeilen indem die HTML Tags ersetzt werden. 
 editRow=null
 let edits = (e)=>{
     event.preventDefault();
     x= editRow.slice(-1);
     var editData = getEditData();
-    console.log(editData.ProduktE);
-    const produktId = "Produkt"+x
-    const produktTemp = document.getElementById(produktId)
-    produktTemp.innerHTML = `<td contenteditable="true" id=&quot;`+ produktId  + `!&quot;>`+editData.ProduktE `</td>`
+    var editProdukt = editData.ProduktE;
+    //console.log(typeof editData.ProduktE);
+    //console.log(typeof editProdukt);
+
+    const produktId = "Produkt"+x;
+    const produktTemp = document.getElementById(produktId);
+    produktTemp.innerHTML = `<td contenteditable="true" id=&quot;`+ produktId  + `!&quot;>`+editData.ProduktE+ `</td>`;
     
+    const preisId = "Preis"+x;
+    const preisTemp = document.getElementById(preisId);
+    preisTemp.innerHTML = `<td contenteditable="true" id=&quot;`+ preisId  + `!&quot;>`+editData.PreisE+ `</td>`;
+
+    const ladenId = "Laden"+x;
+    const ladenTemp = document.getElementById(ladenId);
+    ladenTemp.innerHTML = `<td contenteditable="true" id=&quot;`+ ladenId  + `!&quot;>`+editData.LadenE+ `</td>`;
+
+    var edit = document.getElementById("edit");
+    edit.style.display = "none";
 }
 
 
-//Zeigt das Edit Feld.
+//Zeigt das Edit Feld und ändert editRow zu der angeklickten Zeile.
 let showEditField= (x)=>{
-   
     var edit = document.getElementById("edit");
     if(edit.style.display==="none" || edit.style.display === null){
         edit.style.display="block";
