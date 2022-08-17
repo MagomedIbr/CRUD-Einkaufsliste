@@ -1,11 +1,16 @@
 var selectedRow = null;
 
+myStorage = localStorage;
+var tab = [];
 //Macht ein Objekt aus den Daten der Form
 let getFormData=()=> {
     var formObj ={};
     formObj["Produkt"] = document.getElementById("Produkt").value;
     formObj["Preis"]=document.getElementById("Preis").value;
-    formObj["Laden"]=document.getElementById("Laden").value;
+    formObj["Laden"]=document.getElementById("Laden").value
+    tab.push(formObj);
+    setLocalStorage(tab);
+    getLocalStorage();
     return formObj;
 }
 let rowCount = 0;
@@ -104,4 +109,17 @@ let showEditField= (x)=>{
     )
     editRow=x
     // console.log(editRow)
+}
+
+//
+let setLocalStorage= (obj)=>{
+    localStorage.setItem("Tabelleneinträge", JSON.stringify(obj));
+    //console.log(JSON.stringify(obj));
+}
+
+let getLocalStorage = ()=>{
+    storage = localStorage.getItem("Tabelleneinträge");
+    items = JSON.parse(storage);
+    console.log(storage);
+    console.log(items)
 }
