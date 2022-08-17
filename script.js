@@ -10,7 +10,6 @@ let getFormData=()=> {
     formObj["Laden"]=document.getElementById("Laden").value
     tab.push(formObj);
     setLocalStorage(tab);
-    getLocalStorage();
     return formObj;
 }
 let rowCount = 0;
@@ -120,6 +119,16 @@ let setLocalStorage= (obj)=>{
 let getLocalStorage = ()=>{
     storage = localStorage.getItem("Tabelleneinträge");
     items = JSON.parse(storage);
-    console.log(storage);
-    console.log(items)
+    items.forEach(item => console.log(item));
+    return items;
+    
+}
+
+let loadFromStorage = () => {
+    i = getLocalStorage();
+    i.forEach(item => {
+        insertNewRecord(item)
+        tab.push(item)
+        setLocalStorage(tab)});
+        ;
 }
