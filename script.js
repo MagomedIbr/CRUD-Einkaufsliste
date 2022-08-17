@@ -8,6 +8,7 @@ let getFormData=()=> {
     formObj["Produkt"] = document.getElementById("Produkt").value;
     formObj["Preis"]=document.getElementById("Preis").value;
     formObj["Laden"]=document.getElementById("Laden").value
+    formObj["Datum"]= new Date().toUTCString();
     tab.push(formObj);
     setLocalStorage(tab);
     return formObj;
@@ -131,4 +132,5 @@ let loadFromStorage = () => {
         tab.push(item)
         setLocalStorage(tab)});
         ;
+    refresh();
 }
